@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+    <classPathEntry
+        location="C:\Users\Umasahiro\Java\pleiades\workspace\SpringBootTest\src\main\resources\lib\mysql-connector-java-5.1.44.jar" />
+    <context id="context1" targetRuntime="MyBatis3">
+
+<!--     JDBCの設定です (1) -->
+        <jdbcConnection
+            driverClass="com.mysql.jdbc.Driver"
+            connectionURL="jdbc:mysql://localhost:3306/springtest?serverTimezone=JST"
+            userId="root"
+            password="um53635363"
+        />
+
+<!--     自動生成するエンティティの設定です (2) -->
+        <javaModelGenerator targetPackage="com.example.demo.entity" targetProject="SpringBootTest/src/main/java/">
+            <property name="enableSubPackages" value="true" />
+      		<property name="trimStrings" value="true" />
+        </javaModelGenerator>
+        <sqlMapGenerator targetPackage="com.example.demo.mapper" targetProject="SpringBootTest/src/main/resources/">
+			<property name="enableSubPackages" value="true" />
+        </sqlMapGenerator>
+        <javaClientGenerator targetPackage="com.example.demo.mapper" targetProject="SpringBootTest/src/main/java/" type="XMLMAPPER">
+			<property name="enableSubPackages" value="true" />
+        </javaClientGenerator>
+
+<!--     生成対象のテーブルです（3) -->
+        <table schema="springtest" tableName="meeting_room">
+        	<property name="useActualColumnNames" value="false" />
+        </table>
+    </context>
+</generatorConfiguration>

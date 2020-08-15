@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link  rel="stylesheet" type="text/css" href="css/bootstrap.css">
+    <link  rel="stylesheet" type="text/css" href="css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="js/bootstrap.bundle.js"></script>
+    <script src="js/index.js"></script>
+    <title>Document</title>
+
+</head>
+<body>
+    <button onclick="test1()">テスト1</button>
+    <button onclick="test2()">テスト2</button>
+    
+    <span data-th-text="${flag2 == true ? 'Hello' : 'こんにちは'}"></span>
+    <select>
+        <option value=""></option>
+        <div data-th-if="${flag1}">
+            <option value="1">1</option>
+            <option value="2">2</option>
+        </div>
+        <div data-th-if="${flag2}">
+            <option value="3">3</option>
+        </div>
+    </select>
+
+    <div class="container-fluid mt-5">
+        <div class="row">
+            <div class="col-xl-12 table-responsive">
+                【部屋データ】
+                <table class="table table-bordered">
+                    <tbody>
+                        <tr class="d-flex" data-th-each="item : ${meetingRoomList}">
+                            <td class="col-4" data-th-text="${item.id}"></td>
+                            <td class="col-4" data-th-text="${item.roomName}"></td>
+                            <td class="col-4" data-th-text="${item.max}"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
