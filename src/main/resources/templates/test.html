@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="js/index.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div>id = <span data-th-text="${session.sessionTest.id}"></span></div>
+    <div>name = <span data-th-text="${session.sessionTest.name}"></span></div>
+    <div>text = <span data-th-text="${session.sessionTest.text}"></span></div>
+
+    <button onclick="back()">戻る</button>
+</body>
+</html>

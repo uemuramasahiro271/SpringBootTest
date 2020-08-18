@@ -7,7 +7,6 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -26,10 +25,10 @@ public class IndexController {
 	@Autowired
 	HttpSession session;
 
-	@ModelAttribute(value = "sessionTest")
-	public SessionForm setupSessionForm() {
-		return new SessionForm(1, "AAA", "こんにちは");
-	}
+//	@ModelAttribute(value = "sessionTest")
+//	public SessionForm setupSessionForm() {
+//		return new SessionForm(1, "AAA", "こんにちは");
+//	}
 
 	@GetMapping("/")
 	public ModelAndView hello(ModelAndView mv) {
@@ -41,7 +40,22 @@ public class IndexController {
 		var list = getMeetingRoomList();
 		mv.addObject("meetingRoomList", list);
 
-		session.setAttribute("data", "BBB");
+		var sessionForm = session.getAttribute("sessionTest");
+		if(sessionForm == null) {
+			session.setAttribute("sessionTest", new SessionForm(1, "AAA", "こんにちは"));
+		}
+
+		return mv;
+	}
+
+	@GetMapping("/back")
+	public ModelAndView back(ModelAndView mv) {
+		mv.setViewName("index");
+		mv.addObject("test", "Hello");
+		mv.addObject("flag1", true);
+		mv.addObject("flag2", false);
+
+		var sessionForm = session.getAttribute("sessionTest");
 
 		return mv;
 	}

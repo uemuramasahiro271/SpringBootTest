@@ -14,7 +14,12 @@
 <body>
     <button onclick="test1()">テスト1</button>
     <button onclick="test2()">テスト2</button>
-    
+    <button onclick="test3()">テスト3</button>
+
+    <div>id = <span data-th-text="${session.sessionTest.id}"></span></div>
+    <div>name = <span data-th-text="${session.sessionTest.name}"></span></div>
+    <div>text = <span data-th-text="${session.sessionTest.text}"></span></div>
+
     <span data-th-text="${flag2 == true ? 'Hello' : 'こんにちは'}"></span>
     <select>
         <option value=""></option>
