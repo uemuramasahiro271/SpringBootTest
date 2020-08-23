@@ -29,5 +29,8 @@
         <table schema="springtest" tableName="meeting_room">
         	<property name="useActualColumnNames" value="false" />
         </table>
+                <table schema="springtest" tableName="user_account">
+        	<property name="useActualColumnNames" value="false" />
+        </table>
     </context>
 </generatorConfiguration>
