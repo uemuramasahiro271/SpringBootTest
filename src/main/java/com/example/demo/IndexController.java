@@ -5,6 +5,7 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
@@ -13,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.example.demo.entity.MeetingRoom;
 import com.example.demo.entity.MeetingRoomExample;
 import com.example.demo.mapper.MeetingRoomMapper;
+import com.example.demo.model.AccountUserDetails;
 import com.example.form.SessionForm;
 
 @Controller
@@ -31,7 +33,7 @@ public class IndexController {
 //	}
 
 	@GetMapping("/")
-	public ModelAndView hello(ModelAndView mv) {
+	public ModelAndView hello(@AuthenticationPrincipal AccountUserDetails userDetails, ModelAndView mv) {
 		mv.setViewName("index");
 		mv.addObject("test", "Hello");
 		mv.addObject("flag1", true);
